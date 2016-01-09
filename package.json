@@ -1,0 +1,15 @@
+{
+  "title": "Soundcloud Music Downloader",
+  "name": "scdl",
+  "version": "0.0.1",
+  "description": "The plugin is able to download music from http://www.soundcloud.com and set id3tag to the downloaded music. It should work with OS X, Linux, Windows and needs the python script scdl (https://github.com/flyingrub/scdl) installed.",
+  "main": "index.js",
+  "author": "sedrubal",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
