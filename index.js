@@ -29,6 +29,7 @@ var menuItem = contextMenu.Item({
 		// console.log(file.exitValue);
 		// TODO make a feedback, if it was successful...
 		// e.g. https://techoverflow.net/blog/2014/02/02/Thunderbird-addon-call-eternal-prog/
+		console.log("Successfully downloaded file");
 	}
 }
 );
