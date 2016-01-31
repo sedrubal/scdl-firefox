@@ -14,14 +14,14 @@ var menuItem = contextMenu.Item({
                  '  var url = document.activeElement.href;' +
                  '  self.postMessage(url);' +
                  '});',
-  image: self.data.url("./icon-16.png"),
+  image: self.data.url("./icon.svg"),
 	accessKey: "d",
 	onMessage: function (url) {
 		console.log(url);
 
 		// if you know a better way to run scdl, let me know
 		var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
-		file.initWithPath("/usr/bin/scdl");
+		file.initWithPath(require("sdk/simple-prefs").prefs.scdl_path);
 		var process = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
 		process.init(file);
 		var args = ["-l", url];
