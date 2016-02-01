@@ -2,8 +2,10 @@ var data = require("sdk/self").data;
 
 var self = require("sdk/self");
 let { Cc, Ci } = require('chrome');
-
 var contextMenu = require("sdk/context-menu");
+var prefs = require("sdk/simple-prefs").prefs;
+var pkg = require("./package.json");
+
 var menuItem = contextMenu.Item({
 	label: "Download this song",
   context: [
@@ -21,7 +23,7 @@ var menuItem = contextMenu.Item({
 
 		// if you know a better way to run scdl, let me know
 		var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
-		file.initWithPath(require("sdk/simple-prefs").prefs.scdl_path);
+		file.initWithPath(prefs.scdl_path);
 		var process = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
 		process.init(file);
 		var args = ["-l", url];
