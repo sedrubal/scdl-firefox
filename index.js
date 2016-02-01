@@ -1,5 +1,5 @@
 var data = require("sdk/self").data;
-
+var notifications = require("sdk/notifications");
 var self = require("sdk/self");
 let { Cc, Ci } = require('chrome');
 var contextMenu = require("sdk/context-menu");
@@ -19,7 +19,7 @@ var menuItem = contextMenu.Item({
   image: self.data.url("./icon.svg"),
 	accessKey: "d",
 	onMessage: function (url) {
-		console.log(url);
+		console.log("Downloading " + url);
 
 		// if you know a better way to run scdl, let me know
 		var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
@@ -31,7 +31,12 @@ var menuItem = contextMenu.Item({
 		// console.log(file.exitValue);
 		// TODO make a feedback, if it was successful...
 		// e.g. https://techoverflow.net/blog/2014/02/02/Thunderbird-addon-call-eternal-prog/
-		console.log("Successfully downloaded file");
+		console.log("Successfully downloaded " + url);
+		notifications.notify({
+			title: pkg.title,
+			text: "Sound was downloaded successfully.\n" + url,
+			iconURL: self.data.url("./icon.svg")
+		});
 	}
 }
 );
